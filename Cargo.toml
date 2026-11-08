@@ -1,0 +1,19 @@
+[package]
+name = "rt"
+version = "0.0.1"
+edition = "2024"
+
+[lib]
+path = "src/lib.rs"
+
+[features]
+default = ["mocks"]
+# Generate mockall doubles for the thread and mutex seams.
+mocks = []
+
+[lints.rust]
+unexpected_cfgs = { level = "warn", check-cfg = ['cfg(coverage_nightly)'] }
+
+[dependencies]
+libc = "0.2"
+mockall = "0.14.0"
